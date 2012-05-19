@@ -1,0 +1,199 @@
+body {
+	background-color: #132733;
+}
+
+a:visited,
+a:active,
+a:link {	
+	color : #0065E2;
+}
+
+.posthead
+{
+	border-color: #dfdfdf;
+	color: #006FF7;
+}
+
+.posthead a:link, .posthead a:visited, .posthead a:active
+{
+	color: #006FF7;
+}
+
+.posthead a:hover
+{
+	color: #006FF7;
+}
+
+.postfoot 
+{
+	border-color: #dfdfdf;
+	color: #868686;
+}
+
+.postfoot .em
+{
+	color: #000000;
+}
+
+.pageTitle
+{
+	color: #006FF7;
+}
+
+#leftmenu h3 {
+	border-bottom-color: #dfdfdf;
+}
+
+#leftmenu ul li
+{
+	color: #7C95B3;
+}
+
+#leftmenu ul a:link, #leftmenu ul a:visited, #leftmenu ul a:active
+{
+	color: #7C95B3;
+}
+
+#leftmenu ul a:hover
+{
+	color: #7C95B3;
+}
+
+legend
+{
+	color: #666666;
+}
+
+#comments h2
+{
+	color: #666666;
+}
+
+.CommentArrow
+{
+	background-image: url(../images/winter-comment-arrow.gif);
+	width: 14px;
+	height: 14px;
+	margin-bottom: -7px;
+}
+
+.CommentText2
+{
+	border: solid 1px #bcbcbc;
+}
+
+.CommentText3
+{
+}
+
+.CommentFooter
+{
+	color: #999999;
+}
+
+#content
+{
+	background-color: #ffffff;
+}
+
+/* The masthead sits at the top of the page.*/
+#masthead 
+{
+	background: #ffffff;
+	background-image: url(../images/winter-title.jpg);
+}
+
+#welcome
+{
+	background-color: #000000;
+	color: #ffffff;
+}
+
+#welcome a:link, #welcome a:visited, #welcome a:active, #welcome a:hover
+{
+	color: #ffffff;
+}
+
+.SearchButtonOuter
+{
+	background-image: url(../images/winter-search-left.gif);
+}
+
+.SearchButton
+{
+	background-image: url(../images/winter-search-right.gif);
+	color: #ffffff;
+}
+
+#Search a:link, #Search a:visited, #Search a:active, #Search a:hover
+{
+	color: #ffffff;
+}
+
+#title h1
+{
+	color: #000000
+}
+
+#title a:link, #title a:visited, #title a:active, #title a:hover
+{
+	color: #000000;
+}
+
+#nav
+{
+	background-color: #ffffff;
+}
+
+#navbar
+{
+	background: #666666 url('../images/winter-nav-background.jpg') repeat-x;
+}
+
+#navbar li
+{
+	background-image: url('../images/winter-nav-bul.gif');
+}
+
+#navbar a:link, #navbar a:visited, #navbar a:active
+{
+	color: #ffffff;
+}
+
+/* Tag Styles */
+
+.TagCloud
+{
+	background-color: #f7f7f7;
+	color: #999999;
+}
+
+.Tag1 a:link, .Tag1 a:visited, .Tag1 a:active
+{
+	color: #001592;
+}
+
+.Tag2 a:link, .Tag2 a:visited, .Tag2 a:active
+{
+	color: #0025a2;
+}
+
+.Tag3 a:link, .Tag3 a:visited, .Tag3 a:active
+{
+	color: #0035b2;
+}
+
+.Tag4 a:link, .Tag4 a:visited, .Tag4 a:active
+{
+	color: #0045c2;
+}
+
+.Tag5 a:link, .Tag5 a:visited, .Tag5 a:active
+{
+	color: #0055d2;
+}
+
+.Tag6 a:link, .Tag6 a:visited, .Tag6 a:active
+{
+	color: #0065E2;
+}

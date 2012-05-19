@@ -1,0 +1,33 @@
+to install
+
+1. create the ssh key - it will be created in .ssh dir in 'user'.
+   the directory is hidden so run:
+   "defaults write com.apple.finder AppleShowAllFiles -bool true" 
+   "killall Finder"
+
+2.  keys name need to be id_rsa
+    Finding what keys ssh is offering to the server is fairly simple. 
+	Run "ssh -vT git@github.com"
+3.  test connection using "ssh -T git@github.com" and with the password you enter in the ssh key "ykm_dev"
+
+msysgit - windows
+
+--general git config
+git config --global user.name ‘Guy Burstein’
+git config --global user.email guyb@microsoft.com
+
+--ssh creation
+ssh-keygen –C ‘guyb@microsoft.com’ –t rsa - create key
+ssh -T git@github.com
+
+
+git init - start new project repository
+git add . - add files to index
+git status - status repository
+git commit -m "my first commit to git"
+.gitignore - ignore sections and files in code
+git rm -f udpClient.xcodeproj  - remove file from index, used when we want to ignore the file but he is in the index
+
+git remote add origin git@github.com:shaboli/Folder.git - create new remote repository with name origin
+git pull origin master - pull changes from server
+git push -u origin master - push changes to server

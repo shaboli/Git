@@ -1,0 +1,645 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional-dtd">
+<!-- saved from url=(0093)http://blogs.microsoft.co.il/blogs/bursteg/archive/2012/01/23/git-windows-push-to-github.aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head id="ctl00_ctl00"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="keywords" content="Guy Burstein The Bu linq sql workflow .Net RIA Services Velocity Visual Studio WF 4.0 samples demo ado.net entity framework entlib enterprise library ado.net data services astoria גיא בורשטיין בורנשטיין">
+<meta name="GENERATOR" content="CommunityServer 2007.1 (Build: 20917.1142)">
+<link rel="pingback" href="http://blogs.microsoft.co.il/blogs/bursteg/pingback.aspx">
+<link rel="shortcut icon" type="image/ico" href="http://blogs.microsoft.co.il/favicon.ico">
+<link rel="alternate" type="application/rss+xml" title="Guy Burstein&#39;s Blog (RSS 2.0)" href="http://feeds.feedburner.com/bursteg">
+<link rel="alternate" type="application/rss+xml" title="Guy Burstein&#39;s Blog - All Comments (RSS 2.0)" href="http://blogs.microsoft.co.il/blogs/bursteg/rsscomments.aspx">
+<link rel="alternate" type="application/rss+xml" title="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט - Comments for this post (RSS 2.0)" href="http://blogs.microsoft.co.il/blogs/bursteg/rsscomments.aspx?PostID=995549">
+
+    
+	
+	<link rel="stylesheet" href="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/style.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/print.css" type="text/css" media="print">
+	<link rel="stylesheet" href="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/winter.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/DynamicStyle.aspx" type="text/css" media="screen">
+    <script src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+    _uacct = "UA-486526-1";
+    urchinTracker();
+</script>
+<script language="javascript" type="text/javascript" src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/msAnalytics.js"></script>
+<script language="javascript" type="text/javascript">
+    msAnalytics.ProfileId = 'CDCB';
+    msAnalytics.TrackPage();
+</script>
+
+<!-- START OF SmartSource Data Collector TAG -->
+<!-- Copyright (c) 1996-2009 WebTrends Inc.  All rights reserved. -->
+<!-- Version: MS.3.0.0 -->
+<script src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/wt.js" type="text/javascript"></script>
+
+<!-- ----------------------------------------------------------------------------------- -->
+<!-- Warning: The two script blocks below must remain inline. Moving them to an external -->
+<!-- JavaScript include file can cause serious problems with cross-domain tracking.      -->
+<!-- ----------------------------------------------------------------------------------- -->
+<script type="text/javascript">
+//<![CDATA[
+    var _tag = new WebTrends();
+    _tag.dcsid = "dcsc97avu10000kn75ujgpso2_7j5n";
+    _tag.fpcdom = "blogs.microsoft.co.il";
+    _tag.dcsGetId();
+    _tag.trackevents = true;
+    //]]>>
+</script><script type="text/javascript" src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/wtid.js"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+    // Add custom parameters here.
+    //_tag.DCSext.param_name=param_value;
+    _tag.dcsCollect();
+    //]]>>
+</script>
+
+<noscript>
+&lt;div&gt;&lt;img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsc97avu10000kn75ujgpso2_7j5n/njs.gif?dcsuri=/nojavascript&amp;amp;WT.js=No&amp;amp;WT.tv=MS.3.0.0"/&gt;&lt;/div&gt;
+</noscript>
+<!-- END OF SmartSource Data Collector TAG -->
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blogs.microsoft.co.il/blogs/bursteg/rsd.ashx">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href="http://blogs.microsoft.co.il/blogs/bursteg/wlwmanifest.ashx">
+<meta name="viewport" content="width=device-width">
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-9223182-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<title>
+	Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog
+</title></head>
+<body>
+    <form name="aspnetForm" method="post" action="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog.html" onsubmit="javascript:return WebForm_OnSubmit();" id="aspnetForm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTExNzgzNzk5NjRkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYBBS5jdGwwMCRNYWluJGN0bDEwJGN0bDAyJGN0bDAyJGN0bDAyJGNoa1JlbWVtYmVyGVjUU0BcoQL29xJEL+GJBlPjojY=">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/WebResource.axd" type="text/javascript"></script>
+
+
+<script src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/WebResource(1).axd" type="text/javascript"></script>
+<script src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/WebResource(2).axd" type="text/javascript"></script>
+<script src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/WebResource(3).axd" type="text/javascript"></script>
+<script src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/WebResource(4).axd" type="text/javascript"></script>
+        
+<script type="text/javascript">
+<!--   
+    function ValidateCaptcha(val, args) {
+      
+        var value = args.Value;
+        var nameEQ = "CAPTCHA=";
+        var captchaNumbers;        	
+        var ca = document.cookie.split(';');
+        
+        for(var i=0;i < ca.length;i++) {
+    	    var c = ca[i];
+    	    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+    	    if (c.indexOf(nameEQ) == 0) captchaNumbers =  c.substring(nameEQ.length,c.length);
+	    }
+
+        args.IsValid = captchaNumbers == value;
+
+    }
+-->
+</script>
+
+<script src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/WebResource(5).axd" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+
+    			
+
+    <div id="masthead">
+	    <div id="userArea">
+	        <div id="welcome" class="welcome" align="right">
+	            
+        <a href="http://blogs.microsoft.co.il/login.aspx?ReturnUrl=%2fblogs%2fbursteg%2farchive%2f2012%2f01%2f23%2fgit-windows-push-to-github.aspx">Sign in </a>
+         | <a href="http://blogs.microsoft.co.il/user/CreateUser.aspx?ReturnUrl=">Join</a>
+        | <a href="http://communityserver.org/r.ashx?K">Help</a>
+     
+
+
+	        </div>
+	        
+		    <div id="Search" align="right">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody><tr><td>
+                        <input name="ctl00$ctl06$ctl00$SearchBox" type="text" id="ctl00_ctl06_ctl00_SearchBox" class="searchBox" button="SearchButton" onclick="if(this.defaultValue==this.value) this.value=&#39;&#39;;" onblur="if(this.value==&#39;&#39;) this.value=this.defaultValue;"> 
+                    </td><td>
+                        <span class="SearchButtonOuter"><a id="ctl00_ctl06_ctl00_SearchButton" class="SearchButton" href="javascript:__doPostBack('ctl00$ctl06$ctl00$SearchButton','')">Search</a></span>
+                    </td></tr>
+                    </tbody></table>		        
+                </div>
+	    </div>
+	    <div id="title">
+            <h1 class="headermaintitle">Guy Burstein's Blog</h1>
+            <div>Developer Evangelist @ Microsoft</div>
+        </div>
+    </div>
+
+    <div id="nav">
+	    <div id="navbar">
+		    <ul>
+		        <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/">Home</a></li>
+			    
+			    <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/about.aspx">About</a></li>
+			    <li><a href="http://feeds.feedburner.com/bursteg">RSS</a></li>
+			    
+		        <li id="RssComments"><a href="http://blogs.microsoft.co.il/blogs/bursteg/rsscomments.aspx">Comments RSS</a></li>
+			    
+		    </ul>
+	    </div>
+    </div>
+    <div id="content">
+        <div id="leftmenu">
+            
+                
+                
+                
+                
+                <div id="RecentPosts"><h3>Recent Posts</h3>
+<ul>
+<li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2012/05/17/blog-paper-clip-mobile-responsive-design.aspx">כך תתאימו את הבלוג שלכם לתצוגת מובייל ב- 10 דקות</a></li><li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2012/05/12/responsive-design-for-my-blog.aspx">הבלוג הותאם לדפדפני מובייל</a></li><li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2012/05/07/Windows-8-Metro-JavaScript-HTML5-Tutorial.aspx">מדריך: בניית אפליקציית מטרו לניוזגיק עבור Windows 8 עם JavaScript ו- HTML5</a></li><li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2012/01/24/AppHarbor-ASP-NET.aspx">הכירות עם AppHarbor: פלטפורמה כשירות (PaaS) לאפליקציות NET. ו- Node.JS</a></li><li><a href="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog.html">Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט</a></li>
+</ul></div>
+                
+                
+                <div id="TagSideBar">
+                        <h3>Tags</h3>
+                    <ul class="SidebarTagCloud">
+<li class="Tag1"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/.Net/default.aspx" rel="tag">.Net</a></li>
+<li class="Tag1"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/.Net+Framework+3.0/default.aspx" rel="tag">.Net Framework 3.0</a></li>
+<li class="Tag1"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/.Net+Framework+3.5/default.aspx" rel="tag">.Net Framework 3.5</a></li>
+<li class="Tag2"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/.Net+Framework+4.0/default.aspx" rel="tag">.Net Framework 4.0</a></li>
+<li class="Tag3"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/.Net+RIA+Services/default.aspx" rel="tag">.Net RIA Services</a></li>
+<li class="Tag4"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Acropolis/default.aspx" rel="tag">Acropolis</a></li>
+<li class="Tag4"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/ADO.Net/default.aspx" rel="tag">ADO.Net</a></li>
+<li class="Tag1"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/ADO.Net+3.0/default.aspx" rel="tag">ADO.Net 3.0</a></li>
+<li class="Tag2"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/ADO.Net+Data+Services/default.aspx" rel="tag">ADO.Net Data Services</a></li>
+<li class="Tag1"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Announces/default.aspx" rel="tag">Announces</a></li>
+<li class="Tag5"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/ASP.Net/default.aspx" rel="tag">ASP.Net</a></li>
+<li class="Tag3"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/ASP.Net+MVC/default.aspx" rel="tag">ASP.Net MVC</a></li>
+<li class="Tag4"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/ASP.Net+Routing/default.aspx" rel="tag">ASP.Net Routing</a></li>
+<li class="Tag3"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Astoria/default.aspx" rel="tag">Astoria</a></li>
+<li class="Tag5"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Biztalk/default.aspx" rel="tag">Biztalk</a></li>
+<li class="Tag1"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Blogging/default.aspx" rel="tag">Blogging</a></li>
+<li class="Tag2"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/C_2300_+3.0/default.aspx" rel="tag">C# 3.0</a></li>
+<li class="Tag5"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/C_2300_+4.0/default.aspx" rel="tag">C# 4.0</a></li>
+<li class="Tag4"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/CAB/default.aspx" rel="tag">CAB</a></li>
+<li class="Tag5"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Cloud+Services/default.aspx" rel="tag">Cloud Services</a></li>
+<li class="Tag5"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Community+Server/default.aspx" rel="tag">Community Server</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/CSS/default.aspx" rel="tag">CSS</a></li>
+<li class="Tag1"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/DEV/default.aspx" rel="tag">DEV</a></li>
+<li class="Tag3"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/DevAcademy2/default.aspx" rel="tag">DevAcademy2</a></li>
+<li class="Tag2"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/DevAcademy3/default.aspx" rel="tag">DevAcademy3</a></li>
+<li class="Tag2"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Enterprise+Library+2.0/default.aspx" rel="tag">Enterprise Library 2.0</a></li>
+<li class="Tag2"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Enterprise+Library+3.0/default.aspx" rel="tag">Enterprise Library 3.0</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Enterprise+Library+4.0/default.aspx" rel="tag">Enterprise Library 4.0</a></li>
+<li class="Tag2"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Entity+Framework/default.aspx" rel="tag">Entity Framework</a></li>
+<li class="Tag4"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Getting+Started/default.aspx" rel="tag">Getting Started</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Git/default.aspx" rel="tag">Git</a></li>
+<li class="Tag1"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Hebrew/default.aspx" rel="tag">Hebrew</a></li>
+<li class="Tag3"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/How+To/default.aspx" rel="tag">How To</a></li>
+<li class="Tag4"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/HTML/default.aspx" rel="tag">HTML</a></li>
+<li class="Tag2"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/HTML5/default.aspx" rel="tag">HTML5</a></li>
+<li class="Tag4"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/IE10/default.aspx" rel="tag">IE10</a></li>
+<li class="Tag3"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/IE8/default.aspx" rel="tag">IE8</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/IE9/default.aspx" rel="tag">IE9</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/IIS7/default.aspx" rel="tag">IIS7</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Java/default.aspx" rel="tag">Java</a></li>
+<li class="Tag4"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/JavaScript/default.aspx" rel="tag">JavaScript</a></li>
+<li class="Tag5"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/jQuery/default.aspx" rel="tag">jQuery</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/jQuery+Mobile/default.aspx" rel="tag">jQuery Mobile</a></li>
+<li class="Tag1"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/LINQ/default.aspx" rel="tag">LINQ</a></li>
+<li class="Tag1"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/LINQ+to+Sql/default.aspx" rel="tag">LINQ to Sql</a></li>
+<li class="Tag1"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Misc/default.aspx" rel="tag">Misc</a></li>
+<li class="Tag3"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/MIX08/default.aspx" rel="tag">MIX08</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/MIX09/default.aspx" rel="tag">MIX09</a></li>
+<li class="Tag2"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/MSDN/default.aspx" rel="tag">MSDN</a></li>
+<li class="Tag5"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/MVP/default.aspx" rel="tag">MVP</a></li>
+<li class="Tag5"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Office/default.aspx" rel="tag">Office</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Oracle/default.aspx" rel="tag">Oracle</a></li>
+<li class="Tag1"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Orcas/default.aspx" rel="tag">Orcas</a></li>
+<li class="Tag1"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/p_2600_amp_3B00_p/default.aspx" rel="tag">p&amp;p</a></li>
+<li class="Tag5"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/PDC/default.aspx" rel="tag">PDC</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/PDC2008/default.aspx" rel="tag">PDC2008</a></li>
+<li class="Tag1"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Personal/default.aspx" rel="tag">Personal</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/PHP/default.aspx" rel="tag">PHP</a></li>
+<li class="Tag2"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Presentations/default.aspx" rel="tag">Presentations</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Pulse/default.aspx" rel="tag">Pulse</a></li>
+<li class="Tag3"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Screencasts/default.aspx" rel="tag">Screencasts</a></li>
+<li class="Tag5"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/SCSF/default.aspx" rel="tag">SCSF</a></li>
+<li class="Tag2"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Silverlight+2/default.aspx" rel="tag">Silverlight 2</a></li>
+<li class="Tag4"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Silverlight+3/default.aspx" rel="tag">Silverlight 3</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Silverlight+4/default.aspx" rel="tag">Silverlight 4</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Silverlight+Streaming/default.aspx" rel="tag">Silverlight Streaming</a></li>
+<li class="Tag3"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Software+Factories/default.aspx" rel="tag">Software Factories</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Speakers/default.aspx" rel="tag">Speakers</a></li>
+<li class="Tag2"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/SQL+Server+2008/default.aspx" rel="tag">SQL Server 2008</a></li>
+<li class="Tag4"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/SqlCe/default.aspx" rel="tag">SqlCe</a></li>
+<li class="Tag5"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Sync+Framework/default.aspx" rel="tag">Sync Framework</a></li>
+<li class="Tag5"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Sync+Services/default.aspx" rel="tag">Sync Services</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/System.AddIn/default.aspx" rel="tag">System.AddIn</a></li>
+<li class="Tag3"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/TECH/default.aspx" rel="tag">TECH</a></li>
+<li class="Tag5"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/TechEd/default.aspx" rel="tag">TechEd</a></li>
+<li class="Tag5"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/TechEdIsrael2008/default.aspx" rel="tag">TechEdIsrael2008</a></li>
+<li class="Tag5"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/TechReady6/default.aspx" rel="tag">TechReady6</a></li>
+<li class="Tag3"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Tips+and+Tricks/default.aspx" rel="tag">Tips and Tricks</a></li>
+<li class="Tag3"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Tools/default.aspx" rel="tag">Tools</a></li>
+<li class="Tag3"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Twitter/default.aspx" rel="tag">Twitter</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Velocity/default.aspx" rel="tag">Velocity</a></li>
+<li class="Tag2"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Visual+Studio+2010/default.aspx" rel="tag">Visual Studio 2010</a></li>
+<li class="Tag1"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/VS2008/default.aspx" rel="tag">VS2008</a></li>
+<li class="Tag2"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/VS2008+SP1/default.aspx" rel="tag">VS2008 SP1</a></li>
+<li class="Tag1"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/WCF/default.aspx" rel="tag">WCF</a></li>
+<li class="Tag3"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Web/default.aspx" rel="tag">Web</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/WebMatrix/default.aspx" rel="tag">WebMatrix</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/WebsiteSpark/default.aspx" rel="tag">WebsiteSpark</a></li>
+<li class="Tag1"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/WF/default.aspx" rel="tag">WF</a></li>
+<li class="Tag3"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/WF+4/default.aspx" rel="tag">WF 4</a></li>
+<li class="Tag4"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Windows+7/default.aspx" rel="tag">Windows 7</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Windows+8/default.aspx" rel="tag">Windows 8</a></li>
+<li class="Tag5"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Windows+Azure/default.aspx" rel="tag">Windows Azure</a></li>
+<li class="Tag5"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Windows+Live/default.aspx" rel="tag">Windows Live</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Windows+Phone/default.aspx" rel="tag">Windows Phone</a></li>
+<li class="Tag3"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/WPF/default.aspx" rel="tag">WPF</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/WSS/default.aspx" rel="tag">WSS</a></li>
+<li class="Tag2"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/WSSF/default.aspx" rel="tag">WSSF</a></li>
+<li class="Tag6"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Xaml/default.aspx" rel="tag">Xaml</a></li>
+<li class="Tag2"><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/_D005EA05E805_+_D405D105DC05D505D205D905DD05_/default.aspx" rel="tag">אתר הבלוגים</a></li>
+</ul>
+</div>
+              
+                
+                <div id="NewsSidebar">
+                        <h3>News</h3>
+                    <img src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/Guy_Burstein.aspx" alt="Guy Burstein The Bu">
+
+
+<p>
+<strong>Disclaimer</strong><br>Postings are provided 'As Is' with no warranties and confer no rights.
+</p>
+<p>
+<a href="http://www.linkedin.com/in/bursteg"><img src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/btn_myprofile_160x33.gif" width="160" height="33" border="0" alt="Guy Burstein LinkedIn Profile"></a>
+</p>
+<p>
+<a href="http://feeds.feedburner.com/bursteg"><img src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/bursteg" height="26" width="88" style="border:0;" alt=""></a></p>
+<p><a href="http://twittercounter.com/?username=bursteg" title="TwitterCounter for @bursteg"><img src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/saved_resource" width="88" height="26" style="border:none;" alt="TwitterCounter for @bursteg"></a></p>
+<p></p>
+<div id="twitter_div"><ul id="twitter_update_list"><li><span>@<a href="http://twitter.com/KerenGabay">KerenGabay</a> לגמרי. בדרכי לאילת</span> <a style="font-size:85%" href="http://twitter.com/bursteg/statuses/203762514297749504">about 5 hours ago</a></li><li><span>בבאר שבע פשוט לא יודעים מה זה ג'חנון... איזו עיר מוזרה</span> <a style="font-size:85%" href="http://twitter.com/bursteg/statuses/203757402917568513">about 5 hours ago</a></li><li><span>I just unlocked the "Wino" badge on @<a href="http://twitter.com/foursquare">foursquare</a> for checking in at wine spots! Cheers! <a href="http://t.co/jQikwas2">http://t.co/jQikwas2</a></span> <a style="font-size:85%" href="http://twitter.com/bursteg/statuses/203548970868412416">about 19 hours ago</a></li><li><span>@<a href="http://twitter.com/whosshai">whosshai</a> יאללה, תחזור לנמנם</span> <a style="font-size:85%" href="http://twitter.com/bursteg/statuses/203396856796024833">1 day ago</a></li><li><span>@<a href="http://twitter.com/maordp">maordp</a> זהו? מתחיל רשמית?</span> <a style="font-size:85%" href="http://twitter.com/bursteg/statuses/202988209691574272">2 days ago</a></li></ul>
+<a id="twitter-link" href="http://twitter.com/bursteg">follow me on Twitter</a>
+</div>
+<script src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/blogger.js" type="text/javascript"></script>
+<script src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/bursteg.json" type="text/javascript"></script>
+                        <p>
+                    </p></div>                
+                                
+                
+                <div id="NavSideBar"><h3>Navigation</h3>
+<ul>
+<li><a href="http://blogs.microsoft.co.il/">Home</a></li><li><a href="http://blogs.microsoft.co.il/blogs/">All Posts</a></li><li><a href="http://blogs.microsoft.co.il/blogs/MainFeed.aspx">RSS</a></li><li><a href="http://beta.blogs.microsoft.co.il/tags/index.aspx">Popular Tags</a></li>
+</ul></div>
+                
+                
+                
+                
+                
+                
+                
+                <!--<div id="ArchiveSideBar"><h3>Archives</h3>
+<ul>
+<li><a href="/blogs/bursteg/archive/2012/05.aspx">May 2012 (3)</a></li><li><a href="/blogs/bursteg/archive/2012/01.aspx">January 2012 (2)</a></li><li><a href="/blogs/bursteg/archive/2011/12.aspx">December 2011 (1)</a></li><li><a href="/blogs/bursteg/archive/2011/11.aspx">November 2011 (2)</a></li><li><a href="/blogs/bursteg/archive/2011/10.aspx">October 2011 (4)</a></li><li><a href="/blogs/bursteg/archive/2011/08.aspx">August 2011 (1)</a></li><li><a href="/blogs/bursteg/archive/2011/07.aspx">July 2011 (9)</a></li><li><a href="/blogs/bursteg/archive/2010/11.aspx">November 2010 (1)</a></li><li><a href="/blogs/bursteg/archive/2010/10.aspx">October 2010 (2)</a></li><li><a href="/blogs/bursteg/archive/2010/07.aspx">July 2010 (2)</a></li><li><a href="/blogs/bursteg/archive/2010/05.aspx">May 2010 (1)</a></li><li><a href="/blogs/bursteg/archive/2010/04.aspx">April 2010 (1)</a></li><li><a href="/blogs/bursteg/archive/2010/03.aspx">March 2010 (2)</a></li><li><a href="/blogs/bursteg/archive/2010/02.aspx">February 2010 (3)</a></li><li><a href="/blogs/bursteg/archive/2009/12.aspx">December 2009 (2)</a></li><li><a href="/blogs/bursteg/archive/2009/08.aspx">August 2009 (5)</a></li><li><a href="/blogs/bursteg/archive/2009/07.aspx">July 2009 (3)</a></li><li><a href="/blogs/bursteg/archive/2009/06.aspx">June 2009 (3)</a></li><li><a href="/blogs/bursteg/archive/2009/05.aspx">May 2009 (11)</a></li><li><a href="/blogs/bursteg/archive/2009/04.aspx">April 2009 (11)</a></li><li><a href="/blogs/bursteg/archive/2009/03.aspx">March 2009 (6)</a></li><li><a href="/blogs/bursteg/archive/2009/02.aspx">February 2009 (6)</a></li><li><a href="/blogs/bursteg/archive/2009/01.aspx">January 2009 (5)</a></li><li><a href="/blogs/bursteg/archive/2008/12.aspx">December 2008 (12)</a></li><li><a href="/blogs/bursteg/archive/2008/11.aspx">November 2008 (13)</a></li><li><a href="/blogs/bursteg/archive/2008/10.aspx">October 2008 (4)</a></li><li><a href="/blogs/bursteg/archive/2008/09.aspx">September 2008 (3)</a></li><li><a href="/blogs/bursteg/archive/2008/08.aspx">August 2008 (11)</a></li><li><a href="/blogs/bursteg/archive/2008/07.aspx">July 2008 (9)</a></li><li><a href="/blogs/bursteg/archive/2008/06.aspx">June 2008 (4)</a></li><li><a href="/blogs/bursteg/archive/2008/05.aspx">May 2008 (17)</a></li><li><a href="/blogs/bursteg/archive/2008/04.aspx">April 2008 (8)</a></li><li><a href="/blogs/bursteg/archive/2008/03.aspx">March 2008 (10)</a></li><li><a href="/blogs/bursteg/archive/2008/02.aspx">February 2008 (17)</a></li><li><a href="/blogs/bursteg/archive/2008/01.aspx">January 2008 (7)</a></li><li><a href="/blogs/bursteg/archive/2007/12.aspx">December 2007 (27)</a></li><li><a href="/blogs/bursteg/archive/2007/11.aspx">November 2007 (18)</a></li><li><a href="/blogs/bursteg/archive/2007/10.aspx">October 2007 (22)</a></li><li><a href="/blogs/bursteg/archive/2007/09.aspx">September 2007 (8)</a></li><li><a href="/blogs/bursteg/archive/2007/08.aspx">August 2007 (12)</a></li><li><a href="/blogs/bursteg/archive/2007/07.aspx">July 2007 (17)</a></li><li><a href="/blogs/bursteg/archive/2007/06.aspx">June 2007 (14)</a></li><li><a href="/blogs/bursteg/archive/2007/05.aspx">May 2007 (14)</a></li><li><a href="/blogs/bursteg/archive/2007/04.aspx">April 2007 (25)</a></li><li><a href="/blogs/bursteg/archive/2007/03.aspx">March 2007 (38)</a></li><li><a href="/blogs/bursteg/archive/2007/02.aspx">February 2007 (11)</a></li><li><a href="/blogs/bursteg/archive/2007/01.aspx">January 2007 (15)</a></li><li><a href="/blogs/bursteg/archive/2006/12.aspx">December 2006 (8)</a></li><li><a href="/blogs/bursteg/archive/2006/11.aspx">November 2006 (10)</a></li><li><a href="/blogs/bursteg/archive/2006/10.aspx">October 2006 (24)</a></li><li><a href="/blogs/bursteg/archive/2006/09.aspx">September 2006 (18)</a></li><li><a href="/blogs/bursteg/archive/2006/08.aspx">August 2006 (12)</a></li><li><a href="/blogs/bursteg/archive/2006/07.aspx">July 2006 (25)</a></li><li><a href="/blogs/bursteg/archive/2006/06.aspx">June 2006 (21)</a></li><li><a href="/blogs/bursteg/archive/2006/05.aspx">May 2006 (19)</a></li><li><a href="/blogs/bursteg/archive/2006/04.aspx">April 2006 (18)</a></li>
+</ul></div> -->
+                                        
+                <div class="CommonSidebarArea" id="ArchiveSideBar">
+                    <div class="CommonSidebarRoundTop"><div class="r1"></div><div class="r2"></div><div class="r3"></div><div class="r4"></div></div>
+                    <div class="CommonSidebarInnerArea">
+                        <h4 class="CommonSidebarHeader">Archives</h4>
+                        <div class="CommonSidebarContent">
+                            <ul class="CommonSidebarList">
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2012/05.aspx">May 2012</a> (3)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2012/01.aspx">January 2012</a> (2)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2011/12.aspx">December 2011</a> (1)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2011/11.aspx">November 2011</a> (2)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2011/10.aspx">October 2011</a> (4)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2011/08.aspx">August 2011</a> (1)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2011/07.aspx">July 2011</a> (9)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2010/11.aspx">November 2010</a> (1)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2010/10.aspx">October 2010</a> (2)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2010/07.aspx">July 2010</a> (2)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2010/05.aspx">May 2010</a> (1)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2010/04.aspx">April 2010</a> (1)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2010/03.aspx">March 2010</a> (2)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2010/02.aspx">February 2010</a> (3)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2009/12.aspx">December 2009</a> (2)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2009/08.aspx">August 2009</a> (5)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2009/07.aspx">July 2009</a> (3)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2009/06.aspx">June 2009</a> (3)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2009/05.aspx">May 2009</a> (11)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2009/04.aspx">April 2009</a> (11)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2009/03.aspx">March 2009</a> (6)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2009/02.aspx">February 2009</a> (6)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2009/01.aspx">January 2009</a> (5)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2008/12.aspx">December 2008</a> (12)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2008/11.aspx">November 2008</a> (13)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2008/10.aspx">October 2008</a> (4)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2008/09.aspx">September 2008</a> (3)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2008/08.aspx">August 2008</a> (11)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2008/07.aspx">July 2008</a> (9)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2008/06.aspx">June 2008</a> (4)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2008/05.aspx">May 2008</a> (17)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2008/04.aspx">April 2008</a> (8)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2008/03.aspx">March 2008</a> (10)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2008/02.aspx">February 2008</a> (17)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2008/01.aspx">January 2008</a> (7)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2007/12.aspx">December 2007</a> (27)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2007/11.aspx">November 2007</a> (18)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2007/10.aspx">October 2007</a> (22)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2007/09.aspx">September 2007</a> (8)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2007/08.aspx">August 2007</a> (12)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2007/07.aspx">July 2007</a> (17)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2007/06.aspx">June 2007</a> (14)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2007/05.aspx">May 2007</a> (14)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2007/04.aspx">April 2007</a> (25)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2007/03.aspx">March 2007</a> (38)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2007/02.aspx">February 2007</a> (11)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2007/01.aspx">January 2007</a> (15)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2006/12.aspx">December 2006</a> (8)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2006/11.aspx">November 2006</a> (10)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2006/10.aspx">October 2006</a> (24)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2006/09.aspx">September 2006</a> (18)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2006/08.aspx">August 2006</a> (12)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2006/07.aspx">July 2006</a> (25)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2006/06.aspx">June 2006</a> (21)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2006/05.aspx">May 2006</a> (19)</li>
+            
+                <li><a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2006/04.aspx">April 2006</a> (18)</li>
+            
+                            </ul>
+                        </div>
+                    </div>
+	                <div class="CommonSidebarRoundBottom"><div class="r1"></div><div class="r2"></div><div class="r3"></div><div class="r4"></div></div>
+                </div>
+            
+        
+	        
+        </div>
+        <div id="main">
+	        
+    <div class="post">
+       <h1 class="pageTitle">Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט</h1>
+
+       <div dir="rtl" align="right">   <p><img style="background-image:none;border-right-width:0px;margin:0px 10px 0px 0px;padding-left:0px;padding-right:0px;display:inline;float:left;border-top-width:0px;border-bottom-width:0px;border-left-width:0px;padding-top:0px;" title="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" border="0" alt="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" align="left" src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/github_logo_social_coding_outlined_285C413B.png" width="150" height="67">בפוסטים הקודם ב<a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2011/11/01/Git-on-Windows.aspx">מדריך Git על Windows</a> עשינו את ההכנות הנדרשות: התקנו msysgit והגדרנו הגדרות ראשניות, וגם <a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2011/11/02/Git-on-Windows-GitHubTutorial.aspx">נרשמנו לאתר GitHub</a>. בפוסט הזה ניצור Repository באתר GitHub ונעלה אליו פרוייקט לדוגמא.</p>    <h3>יצירת Repository חדש באתר GitHub</h3>    <p>כשהפרוייקט שלך נמצא ב- GitHub, הוא חי בתוך Repository. כדי שנוכל להעלות פרוייקטים ולשתף קוד באתר GitHub עלינו להתחיל ביצירת Repository חדש.</p>    <p>בעמוד הראשי של האתר, כאשר אנחנו מחוברים אליו, נראה שכרגע אין לנו שום Repository. </p>    <p><img style="background-image:none;border-right-width:0px;margin:0px auto;padding-left:0px;padding-right:0px;display:block;float:none;border-top-width:0px;border-bottom-width:0px;border-left-width:0px;padding-top:0px;" title="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" border="0" alt="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/image_66E18EE1.png" width="600" height="450"></p>    <p>נלחץ על הכפתור <strong>New Repository</strong> ליצירת Repository חדש.</p>    <p><img style="background-image:none;border-right-width:0px;margin:0px auto;padding-left:0px;padding-right:0px;display:block;float:none;border-top-width:0px;border-bottom-width:0px;border-left-width:0px;padding-top:0px;" title="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" border="0" alt="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/image_527BC956.png" width="600" height="450"></p>    <p>נמלא את שם הפרוייקט (לדוגמא: githubsample) והתיאור שלו ונלחץ על <strong>Create Repository</strong>.       <br>נשים לב שקוד הפרוייקט שנשמור ב- Repository שיצרנו יהיו חשוף לכולם, כיוון שאנחנו עובדים בתוכנית חינמית באתר. במידה ואנחנו רוצים למנהל פרוייקט בו הקוד אינו חשוף לכולם, עלינו לשדרג את החשבון.</p>    <p>בסיום התהליך יווצר ה- Repository תחת המשתמש שלנו ונקבל מסך עם הנחיות להמשך.</p>    <p><img style="background-image:none;border-right-width:0px;margin:0px auto;padding-left:0px;padding-right:0px;display:block;float:none;border-top-width:0px;border-bottom-width:0px;border-left-width:0px;padding-top:0px;" title="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" border="0" alt="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/image_7E4C1D45.png" width="600" height="450"></p>    <p>ניתן להגיע ל- Repository שלנו ע”י הקישור בראש העמוד, אך באופן כללי הוא יהיה תמיד בכתובת:</p>    <p><a href="https://github.com/guyburstein/githubsample">https://github.com/guyburstein/githubsample</a></p>    <p>כאשר השם guyburstein הוא שם היוזר ו- githubsample הוא שם הפרוייקט.</p>    <p>בעמוד הראשי שלנו (כאשר אנחנו מחוברים לאתר), נראה שיש לנו כבר Repository אחד.</p>    <p><img style="background-image:none;border-right-width:0px;margin:0px auto;padding-left:0px;padding-right:0px;display:block;float:none;border-top-width:0px;border-bottom-width:0px;border-left-width:0px;padding-top:0px;" title="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" border="0" alt="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/image_3545FB7F.png" width="600" height="450"></p>    <h3>העלאת פרוייקט לאתר GitHub</h3>    <p>באחד הפרקים הקודמים <a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2011/11/02/Git-on-Windows-GitHubTutorial.aspx#basic">הדגמתי שימוש בסיסי ב- Git</a>: יצרתי Console Application פשוט, יצרתי Git Repository מקומי והעברתי אליו את הקבצים ע”י שימוש בפקודות git add ו- git commit.</p>    <p align="center"><a href="http://blogs.microsoft.co.il/blogs/bursteg/image121_6BD3A6C3.png"><img style="background-image:none;border-right-width:0px;padding-left:0px;padding-right:0px;display:inline;border-top-width:0px;border-bottom-width:0px;border-left-width:0px;padding-top:0px;" title="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" border="0" alt="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/image121_thumb_57DA142D.png" width="480" height="278"></a></p>    <p>כעת נמשיך מאותה נקודה ונרצה להעלות את הפרוייקט מה- Repository המקומי ל- Repository המרוחק באתר GitHub.</p>    <p>כדי להגדיר את הקשר ביניהם נשתמש בפקודה git remote ונספק את הנתיד ל- Repository המרוחק שלנו. איפה נמצא אותו? בדיוק בדף למעלה, בו היו מפורטות הוראות ההתחברות ל- Repository שיצרנו.</p>    <p>למעשה, בדיוק בשורה הזאת:</p>    <p><img style="background-image:none;border-right-width:0px;margin:0px auto;padding-left:0px;padding-right:0px;display:block;float:none;border-top-width:0px;border-bottom-width:0px;border-left-width:0px;padding-top:0px;" title="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" border="0" alt="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/image_0F40255C.png" width="616" height="87"></p>    <p>הכתובת ל- Repository המרוחק היא:</p>    <p><a href="mailto:git@github.com:guyburstein/githubsample.git">git@github.com:guyburstein/githubsample.git</a></p>    <p>הכתובת מתחילה בביטוי <a href="mailto:git@github.com">git@github.com</a>, וממשיכה בשם היוזר ושם הפרוייקט ומסתיימת בסיומת git. למרות שזאת לא נראית כתובת אינטרנט רגילה, נשתמש בה ע”ג פרוטוקול SSH כדי לתקשר בצורה מאובטחת עם GitHub.</p>    <p>נשתמש בפקודה הבאה בשינוי שם המשתמש והפרוייקט כמובן:</p>    <p>git remote add origin git@github.com:guyburstein/githubsample.git</p>    <p>כדי להגדיר ל- Repository המקומי, מיהו ה- Repository המרוחק שנעבוד מולו. הפקודה git remote מקבלת את הפרמטר add שמשמעותו להוסיף קישור ל- Repository מרוחק שיהיה מכונה origin, ונמצא בנתיב כלשהו. </p>    <p><img style="background-image:none;border-right-width:0px;margin:0px auto;padding-left:0px;padding-right:0px;display:block;float:none;border-top-width:0px;border-bottom-width:0px;border-left-width:0px;padding-top:0px;" title="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" border="0" alt="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/image_5550E26F.png" width="600" height="347"></p>    <p>מעתה והלאה כשנרצה להתייחס לאותו Repository מרוחק, נשתמש בשם origin.</p>    <p>כעת אנחנו סוף סוף מוכנים לבצע את ההעלאה של קבצי הפרוייקט ל- Reposirory המרוחק. נשתמש בפקודה git push כדי “לדחוף” את העדכונים האחרונים שעשינו להם Commit ל- Repository המקומי אל ה- Repository המרוחק ששמו origin.</p> </div>  <div dir="ltr" align="left">   <pre class="code">git push origin master</pre>
+</div>
+
+<div dir="rtl" align="right">
+  <p><img style="background-image:none;border-right-width:0px;margin:0px auto;padding-left:0px;padding-right:0px;display:block;float:none;border-top-width:0px;border-bottom-width:0px;border-left-width:0px;padding-top:0px;" title="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" border="0" alt="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/image_338509DE.png" width="600" height="347"></p>
+
+  <p>במידה ובמהלך התהליך אתם נשאלים: Are you sure you want to continue connecting? יש להקיש yes (שימו לב להקיש את המילה yes כולה ולא רק את האות y).</p>
+
+  <p>לאחר סיום התהליך, העמוד הראשי של הפרוייקט שלנו יציג את קוד הפרוייקט:</p>
+
+  <p><img style="background-image:none;border-right-width:0px;margin:0px auto;padding-left:0px;padding-right:0px;display:block;float:none;border-top-width:0px;border-bottom-width:0px;border-left-width:0px;padding-top:0px;" title="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" border="0" alt="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/image_6A7EE817.png" width="600" height="450"></p>
+
+  <p>ברכות! העלינו פרוייקט ראשון לאתר GitHub!</p>
+</div>
+       
+
+        <div class="postfoot">
+            	
+            <span class="em">Posted:</span>
+            <a href="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog.html">Jan 23 2012, 02:55 PM</a>
+			by
+			<a href="http://blogs.microsoft.co.il/members/Guy-Burstein.aspx">Guy Burstein</a> 
+			
+                    
+                    | with <a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/2012/01/23/git-windows-push-to-github.aspx#comments">no comments</a>
+                
+            
+            
+            <div class="em"><span id="ctl00_Main_ctl09_ctl01">תגים:<a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/DEV/default.aspx" rel="tag">DEV</a>, <a href="http://blogs.microsoft.co.il/blogs/bursteg/archive/tags/Git/default.aspx" rel="tag">Git</a></span><input type="hidden" name="ctl00$Main$ctl09$ctl01" id="ctl00_Main_ctl09_ctl01_State" value="value:%D7%AA%D7%92%D7%99%D7%9D%3A%3Ca%20href%3D%22%2Fblogs%2Fbursteg%2Farchive%2Ftags%2FDEV%2Fdefault.aspx%22%20rel%3D%22tag%22%3EDEV%3C%2Fa%3E%2C%20%3Ca%20href%3D%22%2Fblogs%2Fbursteg%2Farchive%2Ftags%2FGit%2Fdefault.aspx%22%20rel%3D%22tag%22%3EGit%3C%2Fa%3E"></div>
+        </div>    
+    </div>
+    
+    
+            
+                    <div id="comments">
+                    <a name="Comments"></a>
+                    <h2>Comments</h2>
+                
+                    <p>No Comments</p>
+                
+                    </div>
+                
+            
+            
+            
+            
+                    <fieldset id="commentform">
+                    <legend>Leave a Comment</legend>
+	                    <p>
+                        </p><div><label for="ctl00_Main_ctl10_ctl02_ctl02_ctl02_tbTitle">Title</label> <em>(required)</em><span id="ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl02" style="color:Red;visibility:hidden;">*</span></div>
+	                    <div><input name="ctl00$Main$ctl10$ctl02$ctl02$ctl02$tbTitle" type="text" value="re: Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט" id="ctl00_Main_ctl10_ctl02_ctl02_ctl02_tbTitle" class="smallbox"></div>
+	                    <p>
+                        </p><div id="ctl00_Main_ctl10_ctl02_ctl02_ctl02_NameTitle"><label for="ctl00_Main_ctl10_ctl02_ctl02_ctl02_tbName">Name</label> <em>(required)</em><span id="ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl10" style="color:Red;visibility:hidden;">*</span></div>
+                        <div id="ctl00_Main_ctl10_ctl02_ctl02_ctl02_NameDesc"><input name="ctl00$Main$ctl10$ctl02$ctl02$ctl02$tbName" type="text" id="ctl00_Main_ctl10_ctl02_ctl02_ctl02_tbName" class="smallbox"></div>
+                        <p>
+                        </p><div><label for="ctl00_Main_ctl10_ctl02_ctl02_ctl02_tbUrl">Your URL</label> <em>(optional</em>)</div>
+                        <div><input name="ctl00$Main$ctl10$ctl02$ctl02$ctl02$tbUrl" type="text" id="ctl00_Main_ctl10_ctl02_ctl02_ctl02_tbUrl" class="smallbox"></div>
+                        <p>
+                        </p><div><label for="ctl00_Main_ctl10_ctl02_ctl02_ctl02_tbComment">Comments</label> <em>(required)</em><span id="ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl07" style="color:Red;visibility:hidden;">*</span></div>
+                        <div><textarea name="ctl00$Main$ctl10$ctl02$ctl02$ctl02$tbComment" rows="5" cols="25" id="ctl00_Main_ctl10_ctl02_ctl02_ctl02_tbComment"></textarea></div>
+	                    
+	                        <p>
+                            </p><div><input id="ctl00_Main_ctl10_ctl02_ctl02_ctl02_chkRemember" type="checkbox" name="ctl00$Main$ctl10$ctl02$ctl02$ctl02$chkRemember"><label for="ctl00_Main_ctl10_ctl02_ctl02_ctl02_chkRemember">Remember Me?</label></div>
+                        
+	                    <p>
+                        </p><div id="ctl00_Main_ctl10_ctl02_ctl02_ctl02_CaptchaPanel" class="Captcha_Div">
+	<img src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/captcha.ashx" style="border-width:0px;"><br><span>Enter the numbers above: </span><input name="ctl00$Main$ctl10$ctl02$ctl02$ctl02$CaptchaTextBox" type="text" size="3" id="ctl00_Main_ctl10_ctl02_ctl02_ctl02_CaptchaTextBox"><span id="ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl13" style="color:Red;display:none;">*</span>
+</div><input type="submit" name="ctl00$Main$ctl10$ctl02$ctl02$ctl02$btnSubmit" value="Submit" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$Main$ctl10$ctl02$ctl02$ctl02$btnSubmit&quot;, &quot;&quot;, true, &quot;CreateCommentForm&quot;, &quot;&quot;, false, false))" id="ctl00_Main_ctl10_ctl02_ctl02_ctl02_btnSubmit">
+                    </fieldset>
+                
+        
+        
+        </div>
+        <div id="footer">
+	       
+			    <div class="Copyright"><br><div align="center">התוכן המופיע באתר זה הינו תוכן גולשים. התוכן אינו מטעם או בשליטת/פיקוח מיקרוסופט והיא אינה אחראית לו בכל צורה או אופן<br><span><a href="http://www.microsoft.com/about/legal/en/us/IntellectualProperty/Copyright/Default.aspx">תנאי שימוש</a> |</span><span><a href="http://www.microsoft.com/About/Legal/EN/US/IntellectualProperty/Trademarks/EN-US.aspx">סימנים מסחריים</a> |</span><span><a href="http://go.microsoft.com/fwlink/?LinkId=81184&clcid=0x40d">הצהרת פרטיות</a></span><br></div></div>
+			    
+			    
+
+                <br><center>
+			            <a href="http://communityserver.org/r.ashx?j" target="_blank"><img id="ctl00_BodyFooterRegion_ctl02_ctl03_ctl00" src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/PoweredByCS_commercial.gif" alt="Powered by Community Server (Commercial Edition), by Telligent Systems " style="border-width:0px;"></a>
+			            </center>
+					
+				
+			
+        </div>
+    </div>        
+        
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl02"), document.getElementById("ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl10"), document.getElementById("ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl07"), document.getElementById("ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl13"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl02 = document.all ? document.all["ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl02"] : document.getElementById("ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl02");
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl02.controltovalidate = "ctl00_Main_ctl10_ctl02_ctl02_ctl02_tbTitle";
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl02.errormessage = "*";
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl02.validationGroup = "CreateCommentForm";
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl02.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl02.initialvalue = "";
+var ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl10 = document.all ? document.all["ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl10"] : document.getElementById("ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl10");
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl10.controltovalidate = "ctl00_Main_ctl10_ctl02_ctl02_ctl02_tbName";
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl10.errormessage = "*";
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl10.validationGroup = "CreateCommentForm";
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl10.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl10.initialvalue = "";
+var ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl07 = document.all ? document.all["ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl07"] : document.getElementById("ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl07");
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl07.controltovalidate = "ctl00_Main_ctl10_ctl02_ctl02_ctl02_tbComment";
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl07.errormessage = "*";
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl07.validationGroup = "CreateCommentForm";
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl07.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl07.initialvalue = "";
+var ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl13 = document.all ? document.all["ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl13"] : document.getElementById("ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl13");
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl13.controltovalidate = "ctl00_Main_ctl10_ctl02_ctl02_ctl02_CaptchaTextBox";
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl13.errormessage = "*";
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl13.display = "Dynamic";
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl13.validationGroup = "CreateCommentForm";
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl13.evaluationfunction = "CustomValidatorEvaluateIsValid";
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl13.clientvalidationfunction = "ValidateCaptcha";
+ctl00_Main_ctl10_ctl02_ctl02_ctl02_ctl13.validateemptytext = "true";
+//]]>
+</script>
+
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+rdf:about="http://blogs.microsoft.co.il/blogs/bursteg/archive/2012/01/23/git-windows-push-to-github.aspx"
+dc:identifier="http://blogs.microsoft.co.il/blogs/bursteg/archive/2012/01/23/git-windows-push-to-github.aspx"
+dc:title="Git על Windows: יצירת Repository ב- GitHub והעלאת פרוייקט"
+trackback:ping="http://blogs.microsoft.co.il/blogs/bursteg/trackback.ashx?PostID=995549" />
+</rdf:RDF>
+-->
+<script src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/bursteg(1)" type="text/javascript" charset="utf-8"></script><script src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/bursteg(2)" type="text/javascript"></script> <script type="text/javascript">
+// <![CDATA[
+Telligent_Modal.Configure('/utility/loading.htm',['Modal'],['ModalTitle'],['ModalClose'],['ModalContent'],['ModalFooter'],['ModalResize'],['ModalMask'],100);
+// ]]>
+</script><script type="text/javascript">
+// <![CDATA[
+window.ctl00_Main_ctl09_ctl01 = new Telligent_InlineEditorPanel('ctl00_Main_ctl09_ctl01','ctl00_Main_ctl09_ctl01','ctl00_Main_ctl09_ctl01_State','ctl00_Main_ctl09_ctl00',false,null,null,null);
+// ]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        //]]>
+</script>
+</form>
+
+
+<iframe id="_syncFrame" src="./Git על Windows  יצירת Repository ב- GitHub והעלאת פרוייקט - Guy Burstein's Blog_files/Empty.html" style="z-index: -1; height: 1px; width: 1px; visibility: hidden; display: none; "></iframe></body></html>
