@@ -13,20 +13,57 @@ to install
 msysgit - windows
 
 --general git config
-git config --global user.name ÔGuy BursteinÕ
+git config --global user.name ï¿½Guy Bursteinï¿½
 git config --global user.email guyb@microsoft.com
 
 --ssh creation
-ssh-keygen ÐC Ôguyb@microsoft.comÕ Ðt rsa - create key
+ssh-keygen ï¿½C ï¿½guyb@microsoft.comï¿½ ï¿½t rsa - create key
 ssh -T git@github.com
 
 
 git init - start new project repository
 git add . - add files to index
-git status - status repository
-git commit -m "my first commit to git"
+
+# See the current status of your repository 
+# (which files are changed / new / deleted)
+git status
+
 .gitignore - ignore sections and files in code
 git rm -f udpClient.xcodeproj  - remove file from index, used when we want to ignore the file but he is in the index
+
+# This starts a nice graphical view of the changes
+gitk --all
+
+# Commit the changes, -a will commit changes for modified files
+# but will not add automatically new files
+git commit -a -m "These are new changes"
+
+# Show the history of commits in the current branch
+git log
+
+# Show the differences between the uncommitted files 
+# and the last commit in the current branch
+git diff
+
+
+
+DELETE
+If you delete a file which is under version control git add . will not pick this file up. 
+You need to use the git commit command with the -a flag or the -A flag in the git add command.
+# Try standard way of committing -> will not work 
+git add . && git commit -m "a new file has been created"
+# Now commit with the -a flag
+git commit -a -m "File nonsense.txt is now removed"
+# Alternatively you could add deleted files to the staging index via
+git add -A . 
+git commit -m "File nonsense.txt is now removed"
+
+
+
+
+# Show the existing defined remote repositories
+git remote
+
 
 git remote add origin git@github.com:shaboli/Folder.git - create new remote repository with name origin
 git pull origin master - pull changes from server
