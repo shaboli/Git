@@ -1,4 +1,5 @@
 to install
+http://www.vogella.com/articles/Git/article.html#gitdefintion
 
 1. create the ssh key - it will be created in .ssh dir in 'user'.
    the directory is hidden so run:
@@ -13,11 +14,11 @@ to install
 msysgit - windows
 
 --general git config
-git config --global user.name �Guy Burstein�
+git config --global user.name lior
 git config --global user.email guyb@microsoft.com
 
 --ssh creation
-ssh-keygen �C �guyb@microsoft.com� �t rsa - create key
+ssh-keygen -c "guyb@microsoft.com" -t rsa - create key
 ssh -T git@github.com
 
 
@@ -65,6 +66,23 @@ git commit -m "File nonsense.txt is now removed"
 git remote
 
 
+
 git remote add origin git@github.com:shaboli/Folder.git - create new remote repository with name origin
 git pull origin master - pull changes from server
 git push -u origin master - push changes to server
+
+
+
+BRANCH
+#If you want to see all branches (including remote branches), use the following command.
+git branch -a
+
+# You can merge changes from one branch to the current active one via the following command.
+# Syntax: git merge <branch-name>
+git merge testing
+
+#Delete branch testing
+git branch -d testing
+
+
+
